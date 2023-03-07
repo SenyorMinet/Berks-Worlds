@@ -1,0 +1,46 @@
+function verValorComida() {
+Orion.Say('.status');
+	if (Orion.WaitForGump(1000))
+	{
+		var gump0 = Orion.GetGump('last');
+		if ((gump0 !== null) && (!gump0.Replayed()) && (gump0.ID() === '0x000005CD'))
+		Orion.Wait(500);
+		{
+			var comida = gump0.Text('3');
+			Orion.Wait(500)
+			gump0.Close();
+					Orion.ClearJournal();
+			Orion.Print(comida);
+			Orion.Wait(250);
+		}
+	}
+
+var lastDos = comida.substr(comida.length - 2);
+porComer = 30 - lastDos;
+Orion.Print('Hambre: ' + porComer);
+
+ if (porComer < 1) 
+ 		{
+		Orion.Print('Estas completamente lleno y no necesitas comer');
+		Orion.Print('Revisaremos el hambre en 30 minutos');
+		Orion.Wait('0h 30m 00s 000');
+		verValorComida();
+		}
+if (porComer < 30) 
+	{
+	comerHastaSaciar();
+	}
+	
+}
+
+function comerHastaSaciar() {
+	for (var c = 0; c < porComer; c++)  {
+		Orion.UseObject('0x400B5229');
+		Orion.Wait(250);
+}
+		Orion.ClearJournal();
+		Orion.Print('Has comido ' + porComer + ' manzanas.');
+		Orion.Print('Revisaremos el hambre en 30 minutos');
+		Orion.Wait('0h 30m 00s 000');
+		verValorComida();
+}
