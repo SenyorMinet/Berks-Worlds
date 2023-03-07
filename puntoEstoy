@@ -1,0 +1,28 @@
+//Desarrollado por c0c para Berks Worlds UO
+//12/1/22
+
+function ponerPuntoEstoy() {
+while (true) {
+
+	if (Orion.WaitForGump(1000)) //espera que haya ungump ambierto
+	{
+		var estoy = Orion.GetGump('last');//comprueba que elultimoabierto
+		if ((estoy !== null) && (!estoy.Replayed()) && (estoy.ID() === '0x00000644')) {
+			var textoCodigo = estoy.Text('0');
+				Orion.Print(textoCodigo);	
+				Orion.Screenshot();
+					//substraer losultimos 4digitos
+					var lastCuatro = textoCodigo.substr(textoCodigo.length - 4);
+				Orion.Print(lastCuatro);//imprime los ultimos digitos
+					Orion.Wait('9000');
+			Orion.Say('.ESTOY '+lastCuatro);
+			Orion.Wait('3500');
+			Orion.Say('.VOTARTOP');
+		}
+	}
+}
+Orion.Wait('700000');
+}
+//LLULL
+//[FiCtIoN]
+//♥
